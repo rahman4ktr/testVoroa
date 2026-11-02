@@ -10,7 +10,9 @@ import {
   ChevronDown,
   Circle,
   Clock3,
+  ExternalLink,
   FolderOpen,
+  Globe2,
   Hash,
   Inbox,
   LayoutGrid,
@@ -19,6 +21,7 @@ import {
   Search,
   Sparkles,
   Trash2,
+  UserRound,
   X,
 } from 'lucide-react'
 
@@ -89,6 +92,7 @@ function App() {
   const [activeView, setActiveView] = useState('Today')
   const [activeCategory, setActiveCategory] = useState(null)
   const [isAdding, setIsAdding] = useState(false)
+  const [isIntroOpen, setIsIntroOpen] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [draftTitle, setDraftTitle] = useState('')
   const [draftCategory, setDraftCategory] = useState('Work')
@@ -180,6 +184,64 @@ function App() {
 
   return (
     <div className="app-shell min-h-screen bg-[#f7f7f5] text-[#20211f]">
+      {isIntroOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-[#171815]/50 p-4 backdrop-blur-sm"
+          onClick={(event) => { if (event.target === event.currentTarget) setIsIntroOpen(false) }}
+          onKeyDown={(event) => { if (event.key === 'Escape') setIsIntroOpen(false) }}
+        >
+          <section aria-labelledby="intro-title" aria-modal="true" className="w-full max-w-[460px] overflow-hidden rounded-[24px] border border-white/70 bg-white shadow-2xl" role="dialog">
+            <div className="relative overflow-hidden bg-[#dcebc5] px-7 pb-7 pt-6">
+              <div className="absolute -right-10 -top-20 h-56 w-56 rounded-full border border-[#728957]/15" />
+              <div className="absolute -right-1 -top-11 h-36 w-36 rounded-full border border-[#728957]/15" />
+              <div className="relative flex items-center justify-between">
+                <span className="flex items-center gap-2 rounded-full border border-[#758b55]/20 bg-white/45 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[1.3px] text-[#5f7049]">
+                  <Sparkles size={12} /> A note about this project
+                </span>
+                <button aria-label="Close welcome popup" autoFocus className="flex h-8 w-8 items-center justify-center rounded-full bg-white/45 text-[#5f7049] transition hover:bg-white/75" onClick={() => setIsIntroOpen(false)} type="button">
+                  <X size={15} />
+                </button>
+              </div>
+              <div className="relative mt-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#20211f] text-[#c4f06a] shadow-sm">
+                <Globe2 size={22} />
+              </div>
+              <h2 className="relative mt-4 text-[24px] font-semibold leading-tight tracking-[-1px] text-[#2e3923]" id="intro-title">A little Voroa hosting test.</h2>
+              <p className="relative mt-2 max-w-[360px] text-[13px] leading-relaxed text-[#5f6b51]">
+                This project is being used to try out the Voroa hosting service and see how it works.
+              </p>
+            </div>
+            <div className="p-7">
+              <div className="flex items-center gap-3 rounded-2xl border border-[#eeefeb] bg-[#fafaf8] p-4">
+                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[#e8d9cb] text-[#69584a]">
+                  <UserRound size={19} />
+                </div>
+                <div className="min-w-0">
+                <a href="https://github.com/rahman4ktr/">
+                  <div className="text-[13px] font-semibold text-[#393a34]">M Rahman</div>
+                  <div className="mt-0.5 text-[11px] text-[#92938c]">@rahman4ktr</div>
+                  </a>
+                </div>
+                <span className="ml-auto rounded-full bg-[#edf3e5] px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.8px] text-[#738956]">Testing Voroa</span>
+              </div>
+              <p className="mt-4 text-[12px] leading-relaxed text-[#85867f]">
+                Thanks for stopping by. The app is a hands-on test of hosting at{' '}
+                <a className="font-medium text-[#687e4d] underline decoration-[#b4c39e] underline-offset-2 hover:text-[#465a2d]" href="https://getvoroa.com/" rel="noreferrer" target="_blank">
+                  getvoroa.com
+                </a>.
+              </p>
+              <div className="mt-6 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+                <button className="flex items-center justify-center gap-2 rounded-xl border border-[#e9e9e5] px-4 py-2.5 text-[11px] font-medium text-[#666760] transition hover:bg-[#f7f7f4]" onClick={() => setIsIntroOpen(false)} type="button">
+                  Continue to the app
+                </button>
+                <a className="flex items-center justify-center gap-2 rounded-xl bg-[#20211f] px-4 py-2.5 text-[11px] font-medium text-white transition hover:bg-[#353630]" href="https://getvoroa.com/" rel="noreferrer" target="_blank">
+                  Visit Voroa <ExternalLink size={13} />
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      )}
+
       <aside className="sidebar fixed inset-y-0 left-0 z-20 flex w-[248px] flex-col bg-[#20211f] px-5 py-6 text-white">
         <a className="mb-12 flex items-center gap-3 px-2" href="#" aria-label="Voroa home">
           <span className="brand-mark flex h-9 w-9 items-center justify-center rounded-xl bg-[#c4f06a] text-[#20211f]">
