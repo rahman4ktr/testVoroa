@@ -1,24 +1,24 @@
-# testVoroa
+# Voroa
 
-testing the voroa.
+A calm, focused task manager for planning the day and keeping everyday work moving.
+
+## Features
+
+- Create, complete, and delete tasks
+- Organize tasks into Work, Personal, and Ideas collections
+- Set priorities and due dates
+- Filter tasks by today, upcoming, all, or completed
+- Search tasks by title
+- Save task changes in browser local storage
+- Responsive layout with Tailwind CSS
 
 ## Development
 
-This project uses React and Vite. Start the development server with `npm run dev`, create a production build with `npm run build`, and run lint checks with `npm run lint`.
+```sh
+npm install
+npm run dev
+```
 
-Currently, two official plugins are available:
+Create a production build with `npm run build` and run lint checks with `npm run lint`.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-# testVoroa
-testing the voroa.
->>>>>>> origin/main
+Tasks are stored in the browser under the `voroa-tasks-v1` local-storage key. Clearing browser storage removes saved tasks.
